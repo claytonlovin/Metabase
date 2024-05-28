@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "P@ssw0rdCase"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - petalSync_network
+
+networks:
+  petalSync_network:
+    external: true
